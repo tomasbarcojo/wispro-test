@@ -1,5 +1,17 @@
 /* LOGIN */
 
+.loginPage {
+    /* background-color: red; */
+}
+
+.WisproLogo {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+    width: 50%;
+    cursor: pointer;
+}
+
 .loginPaper {
     margin-top: 150px;
     display: flex;
