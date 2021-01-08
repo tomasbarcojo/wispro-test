@@ -2,10 +2,22 @@
 
 a {
     color: #12127A;
+    text-decoration: none;
 }
 
-.loginPage {
-    /* background-color: red; */
+.OuterContainerLogin {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    align-items: center;
+    background-image: url(./images/citylogin.jpg);
+    background-size: cover;
+  }
+
+.InnerContainerLogin {
+    width: 30%;
+    filter: blur(0)
 }
 
 .WisproLogo {
@@ -17,14 +29,57 @@ a {
 }
 
 .loginPaper {
-    margin-top: 150px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: whitesmoke;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.test {
-    background-color: red;
+.optionsLogin {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 /* REGISTER */
+
+.OuterContainerRegister {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    align-items: center;
+    background-image: url(./images/cityregister.jpg);
+    background-size: cover;
+  }
+
+.InnerContainerRegister {
+    width: 30%;
+    filter: blur(0)
+}
+
+.loginPaper {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* COPYRIGHT */
+
+.Copyright {
+    color: whitesmoke
+}
+
+.Copyright a {
+    text-decoration: none;
+    color: whitesmoke
+}
+
+.Copyright a:hover {
+    text-decoration: underline;
+}
