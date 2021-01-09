@@ -79,17 +79,6 @@ export default function Register() {
     setErrors(validate({ ...data, [event.target.name]: event.target.value }))
   }
 
-  // const resetForm = () => {
-  //   setData({
-  //       ...data,
-  //       firstName: '',
-  //       lastName: '',
-  //       email: '',
-  //       password: '',
-  //   })
-  //   setconfirmPassword('')
-  // }
-
   const handleSubmit = function (e) {
     e.preventDefault()
     setShowErrors(true)
