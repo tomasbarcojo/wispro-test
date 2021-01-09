@@ -13,7 +13,7 @@ import EditIcon from '@material-ui/icons/Edit';
 
 const columns = [
   { id: 'name', label: 'Nombre', minWidth: 170 },
-  { id: 'code', label: 'Email', minWidth: 100 },
+  { id: 'email', label: 'Email', minWidth: 100 },
   {
     id: 'density',
     label: 'Opciones',
@@ -37,20 +37,24 @@ function createData(name, email) {
 
 const rows = [
   createData('India', 'email@email.com'),
+  // {
+  //   name: 'Indiaaa',
+  //   email: 'a@a.com'
+  // }
   createData('China', 'email@email.com'),
   createData('Italy', 'email@email.com'),
   createData('United States', 'email@email.com'),
-  createData('Canada', 'email@email.com'),
-  createData('Australia', 'email@email.com'),
-  createData('Germany', 'email@email.com'),
-  createData('Ireland', 'email@email.com'),
-  createData('Mexico', 'email@email.com'),
-  createData('Japan', 'email@email.com'),
-  createData('France', 'email@email.com'),
-  createData('United Kingdom', 'email@email.com'),
-  createData('Russia', 'email@email.com'),
-  createData('Nigeria', 'email@email.com'),
-  createData('Brazil', 'email@email.com'),
+  // createData('Canada', 'email@email.com'),
+  // createData('Australia', 'email@email.com'),
+  // createData('Germany', 'email@email.com'),
+  // createData('Ireland', 'email@email.com'),
+  // createData('Mexico', 'email@email.com'),
+  // createData('Japan', 'email@email.com'),
+  // createData('France', 'email@email.com'),
+  // createData('United Kingdom', 'email@email.com'),
+  // createData('Russia', 'email@email.com'),
+  // createData('Nigeria', 'email@email.com'),
+  // createData('Brazil', 'email@email.com'),
 ];
 
 const useStyles = makeStyles({
@@ -102,10 +106,7 @@ export default function TableUsers() {
                   {columns.map((column) => {
                     const value = row[column.id];
                     return (
-                      <TableCell key={column.id}>
-                        {/* {column.format && typeof value === 'number' ? column.format(value) : value} */}
-                        {value}
-                      </TableCell>
+                      <TableCell key={column.id}>{value}</TableCell>
                     );
                   })}
                 </TableRow>
