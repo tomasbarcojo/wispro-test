@@ -9,19 +9,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { useState } from 'react'
-import EditIcon from '@material-ui/icons/Edit';
-
-const columns = [
-  { id: 'name', label: 'Nombre', minWidth: 170 },
-  { id: 'email', label: 'Email', minWidth: 100 },
-  {
-    id: 'density',
-    label: 'Opciones',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toFixed(2),
-  },
-];
+import EditIcon from './EditIcon'
+import DeleteIcon from './DeleteButton'
 
 const users = [
     {
@@ -29,6 +18,129 @@ const users = [
         lastName: 'Barcojo',
         email: 'tomasbarcojo@gmail.com'
     },
+    {
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },
+    {
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },
+    {
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },
+    {
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },
+    {
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },
+    {
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },
+    {
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },
+    {
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },{
+      firstName: 'Juan',
+      lastName: 'Galoppo',
+      email: 'juangaloppo@gmail.com'
+    },
+//     {
+//       firstName: 'Tomas',
+//       lastName: 'Barcojo',
+//       email: 'tomasbarcojo@gmail.com'
+//   },
+//   {
+//     firstName: 'Tomas',
+//     lastName: 'Barcojo',
+//     email: 'tomasbarcojo@gmail.com'
+// },
+// {
+//   firstName: 'Tomas',
+//   lastName: 'Barcojo',
+//   email: 'tomasbarcojo@gmail.com'
+// },
 ]
 
 function createData(name, email) {
@@ -37,10 +149,10 @@ function createData(name, email) {
 
 const rows = [
   createData('India', 'email@email.com'),
-  // {
-  //   name: 'Indiaaa',
-  //   email: 'a@a.com'
-  // }
+  {
+    name: 'Indiaaa',
+    email: 'a@a.com'
+  },
   createData('China', 'email@email.com'),
   createData('Italy', 'email@email.com'),
   createData('United States', 'email@email.com'),
@@ -80,49 +192,42 @@ export default function TableUsers() {
     setPage(0);
   };
 
-  console.log(rows)
-
   return (
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
         <Table size="small" stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}   
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
+                <TableCell>Nombre</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>Opciones</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-              return (
+            {users.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) =>
+              <>
                 <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                  {columns.map((column) => {
-                    const value = row[column.id];
-                    return (
-                      <TableCell key={column.id}>{value}</TableCell>
-                    );
-                  })}
+                  <TableCell>{row.firstName} {row.lastName}</TableCell>
+                  <TableCell>{row.email}</TableCell>
+                  <TableCell><DeleteIcon /></TableCell>
                 </TableRow>
-              );
-            })}
+              </>
+            )}
           </TableBody>
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[10, 25, 50, 100]}
         component="div"
-        count={rows.length}
+        count={users.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
+        labelRowsPerPage='Filas por pagina:'
+        nextIconButtonText='Pagina siguiente'
+        backIconButtonText='Pagina previa'
+        labelDisplayedRows={ (from=page) => (`${from.from}-${from.to === -1 ? from.count : from.to} de ${from.count}`)}
       />
     </Paper>
   );
