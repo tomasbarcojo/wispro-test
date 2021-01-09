@@ -59,15 +59,17 @@ export default function SignIn() {
                 id="password"
                 autoComplete="current-password"
               />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                Ingresar
-              </Button>
+              <Link to='/users'>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  Ingresar
+                </Button>
+              </Link>
 
               <div className='optionsLogin'>
                 <Link to="/recover">
