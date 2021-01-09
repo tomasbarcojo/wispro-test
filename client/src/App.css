@@ -83,3 +83,9 @@ a {
 .Copyright a:hover {
     text-decoration: underline;
 }
+
+/* VALIDATION ERRORS */
+
+.validationErrors {
+    color: blue
+}

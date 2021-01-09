@@ -9,6 +9,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Copyright from '../../utils/Copyrigth'
 import WisproLogo from '../../images/wisprologohoriz.png'
+import { useState } from 'react'
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -28,10 +30,74 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  error: {
+    color: 'red',
+  }
 }));
 
 export default function Register() {
   const classes = useStyles();
+  const history = useHistory()
+  const [errors, setErrors] = useState({})
+  const [showErrors, setShowErrors] = useState(false)
+  const [data, setData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  })
+  const [confirmPassword, setconfirmPassword] = useState('')
+
+  function validate(data) {
+    let errors = {};
+    if (!data.firstName  || data.firstName.length === 0) {
+      errors.firstName = 'El nombre es requerido';
+    }
+
+    if (!data.lastName || data.lastName.length === 0) {
+      errors.lastName = 'El apellido es requerido';
+    }
+
+    if (!data.email  || data.email.length === 0) {
+      errors.email = 'Email requerido';
+    } else if (!/\S+@\S+\.\S+/.test(data.email)) {
+      errors.email = 'Email invalido';
+    }
+    
+    if (!data.password  || data.password.length === 0) {
+      errors.password = 'Contraseña requerida';
+    } else if (!/(?=.*[0-9])/.test(data.password)) {
+      errors.password = 'Contraseña invalida';
+    } else if(data.password.length < 8){
+      errors.password = 'La contraseña debe tener 8 o más caracteres'
+    }
+    return errors
+  }
+
+  const handleChange = (event) => {
+    setData({...data, [event.target.name]: event.target.value})
+    setErrors(validate({ ...data, [event.target.name]: event.target.value }))
+  }
+
+  // const resetForm = () => {
+  //   setData({
+  //       ...data,
+  //       firstName: '',
+  //       lastName: '',
+  //       email: '',
+  //       password: '',
+  //   })
+  //   setconfirmPassword('')
+  // }
+
+  const handleSubmit = function (e) {
+    e.preventDefault()
+    setShowErrors(true)
+    console.log(data)
+    if (Object.keys(errors).length === 0) {
+      history.push('/')
+    }
+  }
 
   return (
     <div className='OuterContainerRegister'>
@@ -42,7 +108,7 @@ export default function Register() {
           <Typography component="h1" variant="h5">
             Registro
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -54,7 +120,10 @@ export default function Register() {
                   id="firstName"
                   label="Nombre"
                   autoFocus
-                />
+                  onChange={handleChange}
+                  value={data.firstName}
+                  />
+                  {showErrors && errors.firstName && (<p className={classes.error}>{errors.firstName}</p>)}
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -65,9 +134,12 @@ export default function Register() {
                   label="Apellido"
                   name="lastName"
                   autoComplete="lname"
+                  onChange={handleChange}
+                  value={data.lastName}
                 />
+              {showErrors && errors.lastName && (<p className={classes.error}>{errors.lastName}</p>)}
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12}> 
                 <TextField
                   variant="outlined"
                   required
@@ -76,7 +148,10 @@ export default function Register() {
                   label="Email"
                   name="email"
                   autoComplete="email"
+                  onChange={handleChange}
+                  value={data.email}
                 />
+              {showErrors && errors.email && (<p className={classes.error}>{errors.email}</p>)}
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -88,7 +163,10 @@ export default function Register() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  onChange={handleChange}
+                  value={data.password}
                 />
+              {showErrors && errors.password && (<p className={classes.error}>{errors.password}</p>)}
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -98,9 +176,13 @@ export default function Register() {
                   name="passwordconfirm"
                   label="Confirmacion de contraseña"
                   type="password"
-                  id="password"
+                  id="passwordconfirm"
                   autoComplete="current-password"
+                  onChange={(e) => setconfirmPassword(e.target.value)}
+                  value={confirmPassword}
                 />
+
+              {confirmPassword !== data.password ? (<p className={classes.error}>No coinciden las contraseñas</p>) : null}
               </Grid>
               <Grid item xs={12}>
               </Grid>
