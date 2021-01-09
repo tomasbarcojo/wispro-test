@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { useState } from 'react'
+import EditIcon from '@material-ui/icons/Edit';
 
 const columns = [
   { id: 'name', label: 'Nombre', minWidth: 170 },
@@ -21,6 +22,14 @@ const columns = [
     format: (value) => value.toFixed(2),
   },
 ];
+
+const users = [
+    {
+        firstName: 'Tomas',
+        lastName: 'Barcojo',
+        email: 'tomasbarcojo@gmail.com'
+    },
+]
 
 function createData(name, code, population, size) {
   const density = population / size;
@@ -89,13 +98,18 @@ export default function TableUsers() {
             {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
                 <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                  {columns.map((column) => {
+                  {users.map((column) => {
                     const value = row[column.id];
                     return (
                       <TableCell key={column.id} align={column.align}>
                         {column.format && typeof value === 'number' ? column.format(value) : value}
                       </TableCell>
                     );
+                    // return (
+                    //     <TableCell key={column.id} aling={column.aling}>
+                    //         <EditIcon />
+                    //     </TableCell>
+                    // )
                   })}
                 </TableRow>
               );
