@@ -89,3 +89,10 @@ a {
 .validationErrors {
     color: blue
 }
+
+/* DASHBOARD */
+
+.WisproLogoDashboard {
+    width: 9%;
+    cursor: pointer;
+}
