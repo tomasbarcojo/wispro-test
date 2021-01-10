@@ -9,7 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { useState } from 'react'
-import EditIcon from './EditIcon'
+import EditIcon from './EditButton'
 import DeleteIcon from './DeleteButton'
 
 const users = [
@@ -209,7 +209,7 @@ export default function TableUsers() {
                 <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                   <TableCell>{row.firstName} {row.lastName}</TableCell>
                   <TableCell>{row.email}</TableCell>
-                  <TableCell><DeleteIcon /></TableCell>
+                  <TableCell padding='none'><EditIcon /></TableCell>
                 </TableRow>
               </>
             )}

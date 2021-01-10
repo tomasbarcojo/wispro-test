@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import IconButton from '@material-ui/core/IconButton';
 import { Tooltip } from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import { useState } from 'react'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -34,8 +34,8 @@ export default function DeleteButton({props}) {
   return (
     <div>
       <IconButton onClick={handleClickOpen}>
-        <Tooltip title='Eliminar producto'>
-            <DeleteIcon fontSize='small' color='secondary' />
+        <Tooltip title='Editar producto'>
+            <EditIcon fontSize='small'/>
         </Tooltip>
         </IconButton>
       <Dialog
