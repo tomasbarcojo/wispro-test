@@ -81,18 +81,18 @@ module.exports = {
     },
 
     async modifyUser(req, res) {
-      const { name, lastname, newpassword } = req.body
+      const { firstName, lastName, newpassword } = req.body
         try {
           const user = await User.findByPk(req.params.id)
           if (!user) return res.status(404).send('User does not exist')
           
-          user.name = name || user.name;
-          user.lastname = lastname || user.lastname;
-          let changedPassword = await hashPassword(newpassword)
-          user.password = changedPassword || user.password;
+          user.firstName = firstName || user.firstName;
+          user.lastName = lastName || user.lastName;
+          // let changedPassword = await hashPassword(newpassword)
+          // user.password = changedPassword || user.password;
 
           await user.save()
-          res.status(200).send(user)
+          res.status(200).send({user, status: 200})
         } catch (err) {
           console.log(err);
           res.status(500).send({message: 'Something went wrong'})
@@ -104,11 +104,11 @@ module.exports = {
         User.findByPk(req.params.id)
           .then((user) => {
             user.destroy().then(() => {
-              res.status(200).json(user)
+              res.status(200).send({user, status: 200})
             })
           })
       } catch (err) {
-        res.status(404).send('Invalid ID')
+        res.status(404).send({message: 'Invalid ID', status: 404})
       }
     },
 

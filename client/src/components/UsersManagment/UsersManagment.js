@@ -12,6 +12,7 @@ import Box from '@material-ui/core/Box';
 import Copyright from '../../utils/Copyrigth'
 import Logo from '../../images/wisprologohoriz.png'
 import TableUsers from './TableUsers'
+import Chart from '../Chart/Chart'
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -114,6 +115,10 @@ export default function UsersManagment() {
       {/* End hero unit */}
       <Container maxWidth="md" component="main">
         <TableUsers />
+      </Container>
+
+      <Container maxWidth="md" component="main">
+        <Chart />
       </Container>
       {/* Footer */}
       <Container maxWidth="md" component="footer" className={classes.footer}>

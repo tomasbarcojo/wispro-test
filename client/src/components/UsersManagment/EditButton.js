@@ -33,11 +33,11 @@ export default function DeleteButton({props}) {
 
   return (
     <div>
-      <IconButton onClick={handleClickOpen}>
+      {/* <IconButton onClick={handleClickOpen}> */}
         <Tooltip title='Editar usuario'>
             <EditIcon fontSize='small'/>
         </Tooltip>
-        </IconButton>
+      {/* </IconButton> */}
       <Dialog
         open={open}
         TransitionComponent={Transition}

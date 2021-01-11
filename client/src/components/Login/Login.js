@@ -42,7 +42,7 @@ export default function SignIn() {
     e.preventDefault()
 
     if (data.email.length > 0 && data.password.length > 0) {
-      let login = fetch('http://localhost:3001/users/login', {
+      fetch('http://localhost:3001/users/login', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

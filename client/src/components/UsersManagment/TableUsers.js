@@ -8,140 +8,142 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { useState } from 'react'
-import EditIcon from './EditButton'
+import { useState, useEffect } from 'react'
+import EditIcon from '../EditUser/EditUser'
 import DeleteIcon from './DeleteButton'
+// import EditIcon from '@material-ui/icons/Edit';
+// import DeleteIcon from '@material-ui/icons/Delete';
 
-const users = [
-    {
-        firstName: 'Tomas',
-        lastName: 'Barcojo',
-        email: 'tomasbarcojo@gmail.com'
-    },
-    {
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },
-    {
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },
-    {
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },
-    {
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },
-    {
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },
-    {
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },
-    {
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },
-    {
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },{
-      firstName: 'Juan',
-      lastName: 'Galoppo',
-      email: 'juangaloppo@gmail.com'
-    },
+// const users = [
 //     {
-//       firstName: 'Tomas',
-//       lastName: 'Barcojo',
-//       email: 'tomasbarcojo@gmail.com'
-//   },
-//   {
-//     firstName: 'Tomas',
-//     lastName: 'Barcojo',
-//     email: 'tomasbarcojo@gmail.com'
-// },
-// {
-//   firstName: 'Tomas',
-//   lastName: 'Barcojo',
-//   email: 'tomasbarcojo@gmail.com'
-// },
-]
+//         firstName: 'Tomas',
+//         lastName: 'Barcojo',
+//         email: 'tomasbarcojo@gmail.com'
+//     },
+//     {
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },
+//     {
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },
+//     {
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },
+//     {
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },
+//     {
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },
+//     {
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },
+//     {
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },
+//     {
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },{
+//       firstName: 'Juan',
+//       lastName: 'Galoppo',
+//       email: 'juangaloppo@gmail.com'
+//     },
+// //     {
+// //       firstName: 'Tomas',
+// //       lastName: 'Barcojo',
+// //       email: 'tomasbarcojo@gmail.com'
+// //   },
+// //   {
+// //     firstName: 'Tomas',
+// //     lastName: 'Barcojo',
+// //     email: 'tomasbarcojo@gmail.com'
+// // },
+// // {
+// //   firstName: 'Tomas',
+// //   lastName: 'Barcojo',
+// //   email: 'tomasbarcojo@gmail.com'
+// // },
+// ]
 
 function createData(name, email) {
   return { name, email };
@@ -182,6 +184,15 @@ export default function TableUsers() {
   const classes = useStyles();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/users/`)
+    .then(res => res.json())
+    .then(data => {
+      setUsers(data)
+    })
+}, [])
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -209,7 +220,12 @@ export default function TableUsers() {
                 <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                   <TableCell>{row.firstName} {row.lastName}</TableCell>
                   <TableCell>{row.email}</TableCell>
-                  <TableCell padding='none'><EditIcon /></TableCell>
+                  <TableCell padding='none'><EditIcon
+                  id={row.id}
+                  firstName={row.firstName}
+                  lastName={row.lastName}
+                  email={row.email}
+                  /></TableCell>
                 </TableRow>
               </>
             )}
