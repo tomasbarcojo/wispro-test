@@ -82,8 +82,16 @@ export default function Register() {
   const handleSubmit = function (e) {
     e.preventDefault()
     setShowErrors(true)
-    console.log(data)
     if (Object.keys(errors).length === 0) {
+      fetch('http://localhost:3001/users/createUser', {
+        method: 'POST',
+        // credentials: 'include',
+        body: JSON.stringify(data),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+		})
       history.push('/')
     }
   }

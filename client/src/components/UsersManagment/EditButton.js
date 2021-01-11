@@ -34,7 +34,7 @@ export default function DeleteButton({props}) {
   return (
     <div>
       <IconButton onClick={handleClickOpen}>
-        <Tooltip title='Editar producto'>
+        <Tooltip title='Editar usuario'>
             <EditIcon fontSize='small'/>
         </Tooltip>
         </IconButton>
