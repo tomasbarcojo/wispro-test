@@ -83,7 +83,7 @@ export default function EditButton() {
           .then(res => {
             if (res.status === 200) {
               Swal.fire('Guardado!', '', 'success')
-              setTimeout(function () { window.open('/users', '_self') }, 1500);
+              setTimeout(function () { window.open('/users', '_self') }, 1200);
             } else {
               Swal.fire('Error', 'Los cambios no fueron guardado', 'info')
             }
@@ -120,7 +120,7 @@ export default function EditButton() {
                 '',
                 'success'
               )
-              setTimeout(function () { window.open('/users', '_self') }, 1500);
+              setTimeout(function () { window.open('/users', '_self') }, 1200);
             }
             else {
               Swal.fire(
@@ -153,20 +153,17 @@ export default function EditButton() {
                 <TextField
                   name="firstName"
                   variant="outlined"
-                  // required
                   fullWidth
                   id="firstName"
                   label="Nombre"
                   autoFocus
                   value={data.firstName}
                   onChange={handleChange}
-                // value={data.firstName}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   variant="outlined"
-                  // required
                   fullWidth
                   id="lastName"
                   label="Apellido"

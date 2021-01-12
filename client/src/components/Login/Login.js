@@ -101,7 +101,6 @@ export default function SignIn() {
                 autoComplete="current-password"
                 onChange={handleChange}
               />
-              {/* <Link to='/users'> */}
                 <Button
                   type="submit"
                   fullWidth
@@ -111,13 +110,10 @@ export default function SignIn() {
                 >
                   Ingresar
                 </Button>
-              {/* </Link> */}
-
               <div className='optionsLogin'>
                 <Link to="/">
                   ¿Olvidó su contraseña?
                 </Link>
-
                 <Link to="/register">
                   {"¿No tiene una cuenta? Regístrese"}
                 </Link>
