@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -13,163 +14,6 @@ import EditIcon from '../EditUser/EditUser'
 import DeleteIcon from './DeleteButton'
 // import EditIcon from '@material-ui/icons/Edit';
 // import DeleteIcon from '@material-ui/icons/Delete';
-
-// const users = [
-//     {
-//         firstName: 'Tomas',
-//         lastName: 'Barcojo',
-//         email: 'tomasbarcojo@gmail.com'
-//     },
-//     {
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },
-//     {
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },
-//     {
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },
-//     {
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },
-//     {
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },
-//     {
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },
-//     {
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },
-//     {
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },{
-//       firstName: 'Juan',
-//       lastName: 'Galoppo',
-//       email: 'juangaloppo@gmail.com'
-//     },
-// //     {
-// //       firstName: 'Tomas',
-// //       lastName: 'Barcojo',
-// //       email: 'tomasbarcojo@gmail.com'
-// //   },
-// //   {
-// //     firstName: 'Tomas',
-// //     lastName: 'Barcojo',
-// //     email: 'tomasbarcojo@gmail.com'
-// // },
-// // {
-// //   firstName: 'Tomas',
-// //   lastName: 'Barcojo',
-// //   email: 'tomasbarcojo@gmail.com'
-// // },
-// ]
-
-function createData(name, email) {
-  return { name, email };
-}
-
-const rows = [
-  createData('India', 'email@email.com'),
-  {
-    name: 'Indiaaa',
-    email: 'a@a.com'
-  },
-  createData('China', 'email@email.com'),
-  createData('Italy', 'email@email.com'),
-  createData('United States', 'email@email.com'),
-  // createData('Canada', 'email@email.com'),
-  // createData('Australia', 'email@email.com'),
-  // createData('Germany', 'email@email.com'),
-  // createData('Ireland', 'email@email.com'),
-  // createData('Mexico', 'email@email.com'),
-  // createData('Japan', 'email@email.com'),
-  // createData('France', 'email@email.com'),
-  // createData('United Kingdom', 'email@email.com'),
-  // createData('Russia', 'email@email.com'),
-  // createData('Nigeria', 'email@email.com'),
-  // createData('Brazil', 'email@email.com'),
-];
 
 const useStyles = makeStyles({
   root: {
@@ -220,12 +64,17 @@ export default function TableUsers() {
                 <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                   <TableCell>{row.firstName} {row.lastName}</TableCell>
                   <TableCell>{row.email}</TableCell>
-                  <TableCell padding='none'><EditIcon
-                  id={row.id}
-                  firstName={row.firstName}
-                  lastName={row.lastName}
-                  email={row.email}
-                  /></TableCell>
+                  <TableCell padding='none'>
+                    <Link to={`/edituser/${row.id}`}>
+                      <EditIcon
+                      id={row.id}
+                      firstName={row.firstName}
+                      lastName={row.lastName}
+                      email={row.email}
+                      />
+                    </Link>
+                  
+                  </TableCell>
                 </TableRow>
               </>
             )}

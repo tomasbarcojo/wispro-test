@@ -44,7 +44,7 @@ export default function EditUser({ id, firstName, lastName, email }) {
     .then(res => {
         if (res.status === 200) {
             setOpen(false);
-            window.open('/users', '_self')
+            // window.open('/users', '_self')
         }
         else {
             alert('Ocurrio un error')

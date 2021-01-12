@@ -14,6 +14,7 @@ import Logo from '../../images/wisprologohoriz.png'
 import TableUsers from './TableUsers'
 import Chart from '../Chart/Chart'
 import Divider from '@material-ui/core/Divider';
+import NavBar from '../NavBar/NavBar'
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -85,28 +86,9 @@ export default function UsersManagment() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
-            <img className='WisproLogoDashboard' src={Logo} alt='Wispro Logo' />
-          <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-            
-          </Typography>
-          <nav>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-              Productos
-            </Link>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-              ¿Quienes somos?
-            </Link>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-              Soporte
-            </Link>
-          </nav>
-          <Button href="/" color="primary" variant="outlined" className={classes.link}>
-            Desloguearse
-          </Button>
-        </Toolbar>
-      </AppBar>
+      
+      <NavBar />
+
       {/* Hero unit */}
       <Container maxWidth="sm" component="main" className={classes.heroContent}>
         <Typography component="h1" variant="h4" align="center" color="textPrimary" gutterBottom>
