@@ -11,6 +11,7 @@ import TableUsers from './TableUsers'
 import Chart from '../Chart/Chart'
 import Divider from '@material-ui/core/Divider';
 import NavBar from '../NavBar/NavBar'
+import GenerateUsers from '../GenerateUsers/GenerateUsers'
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -124,7 +125,7 @@ export default function UsersManagment() {
           ))}
         </Grid>
         <Box mt={5}>
-          <Copyright />
+          <Copyright /> <GenerateUsers />
         </Box>
       </Container>
       {/* End footer */}

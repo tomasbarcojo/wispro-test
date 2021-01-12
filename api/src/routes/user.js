@@ -7,8 +7,6 @@ server.get('/', getUsers)
 
 server.post('/createUser', createUser)
 
-server.get('/logout', userLogout)
-
 server.post('/login', loginUser)
 
 server.get('/:id', getOneUser)

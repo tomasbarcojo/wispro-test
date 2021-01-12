@@ -114,7 +114,7 @@ export default function SignIn() {
               {/* </Link> */}
 
               <div className='optionsLogin'>
-                <Link to="/recover">
+                <Link to="/">
                   ¿Olvidó su contraseña?
                 </Link>
 

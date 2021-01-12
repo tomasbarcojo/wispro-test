@@ -42,6 +42,66 @@ const data = [
   {
     day: '11/01', Logueos: randomValues(), Registros: randomValues(),
   },
+  {
+    day: '12/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '13/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '14/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '15/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '16/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '17/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '18/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '19/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '20/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '21/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '22/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '23/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '24/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '25/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '26/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '27/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '28/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '29/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '30/01', Logueos: randomValues(), Registros: randomValues(),
+  },
+  {
+    day: '31/01', Logueos: randomValues(), Registros: randomValues(),
+  },
 ];
 
 
@@ -62,8 +122,8 @@ const CustomTooltip = ({ active, payload, label }) => {
     return (
       <div className="custom-tooltip">
         <p className="intro">{getIntroOfPage(label)}</p>
-        <p className="label">{`Logueos registrados: ${payload[1].value}`}</p>
-        <p>{`Nuevos registros: ${payload[0].value}`}</p>
+        <p className="label">{`Logueos: ${payload[1].value}`}</p>
+        <p>{`Nuevos usuarios registrados: ${payload[0].value}`}</p>
       </div>
     );
   }
@@ -80,12 +140,9 @@ export default class Example extends PureComponent {
           Logueos y registros diarios del ultimo mes
       </Typography>
       <BarChart
-        width={900}
-        height={300}
+        width={1000}
+        height={400}
         data={data}
-        margin={{
-          top: 5, right: 30, left: 20, bottom: 5,
-        }}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="day" />

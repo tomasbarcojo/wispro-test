@@ -13,15 +13,13 @@ import { useState, useEffect } from 'react'
 import EditIcon from '@material-ui/icons/Edit';
 import { Tooltip } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
-// import EditIcon from '@material-ui/icons/Edit';
-// import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles({
   root: {
     width: '100%',
   },
   container: {
-    maxHeight: 440,
+    maxHeight: 540,
   },
 });
 
@@ -57,9 +55,9 @@ export default function TableUsers() {
               <Table size="small" stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Nombre</TableCell>
-                    <TableCell>Email</TableCell>
-                    <TableCell>Opciones</TableCell>
+                    <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Nombre</TableCell>
+                    <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Email</TableCell>
+                    <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Opciones</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
