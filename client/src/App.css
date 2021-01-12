@@ -96,3 +96,16 @@ a {
     width: 9%;
     cursor: pointer;
 }
+
+.Chart {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 50px;
+}
+
+.Divider {
+    margin-top: 50px;
+    /* margin-bottom: 20px; */
+}

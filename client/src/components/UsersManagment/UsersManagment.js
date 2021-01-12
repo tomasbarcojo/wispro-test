@@ -13,6 +13,7 @@ import Copyright from '../../utils/Copyrigth'
 import Logo from '../../images/wisprologohoriz.png'
 import TableUsers from './TableUsers'
 import Chart from '../Chart/Chart'
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -117,10 +118,14 @@ export default function UsersManagment() {
         <TableUsers />
       </Container>
 
-      <Container maxWidth="md" component="main">
+      <div className='Divider'>
+        <Divider variant="middle" />
+      </div>
+
+      <div className='Chart'>
         <Chart />
-      </Container>
-      {/* Footer */}
+      </div>
+
       <Container maxWidth="md" component="footer" className={classes.footer}>
         <Grid container spacing={4} justify="space-evenly">
           {footers.map((footer) => (
