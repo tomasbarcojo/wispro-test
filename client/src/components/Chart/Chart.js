@@ -6,37 +6,37 @@ import Typography from '@material-ui/core/Typography';
 
 const data = [
   {
-    day: '01/01',  log: 4000, Logueos: 2400, amt: 2400,
+    day: '01/01', Logueos: 2400, Registros: 2400,
   },
   {
-    day: '02/01', log: 3000, Logueos: 1398, amt: 2210,
+    day: '02/01', Logueos: 1398, Registros: 2210,
   },
   {
-    day: '03/01', log: 2000, Logueos: 9800, amt: 2290,
+    day: '03/01', Logueos: 9800, Registros: 2290,
   },
   {
-    day: '04/01', log: 2780, Logueos: 3908, amt: 2000,
+    day: '04/01', Logueos: 3908, Registros: 2000,
   },
   {
-    day: '05/01', log: 1890, Logueos: 4800, amt: 2181,
+    day: '05/01', Logueos: 4800, Registros: 2181,
   },
   {
-    day: '06/01', log: 2390, Logueos: 3800, amt: 2500,
+    day: '06/01', Logueos: 3800, Registros: 2500,
   },
   {
-    day: '07/01', log: 3490, Logueos: 4300, amt: 2100,
+    day: '07/01', Logueos: 4300, Registros: 2100,
   },
   {
-    day: '08/01', log: 3490, Logueos: 4300, amt: 2100,
+    day: '08/01', Logueos: 4300, Registros: 2100,
   },
   {
-    day: '09/01', log: 3490, Logueos: 4300, amt: 2100,
+    day: '09/01', Logueos: 4300, Registros: 2100,
   },
   {
-    day: '10/01', log: 3490, Logueos: 4300, amt: 2100,
+    day: '10/01', Logueos: 4300, Registros: 2100,
   },
   {
-    day: '11/01', log: 3490, Logueos: 4300, amt: 2100,
+    day: '11/01', Logueos: 4300, Registros: 2100,
   },
 ];
 
@@ -58,7 +58,8 @@ const CustomTooltip = ({ active, payload, label }) => {
     return (
       <div className="custom-tooltip">
         <p className="intro">{getIntroOfPage(label)}</p>
-        <p className="label">{`Logueos registrados: ${payload[0].value}`}</p>
+        <p className="label">{`Logueos registrados: ${payload[1].value}`}</p>
+        <p>{`Nuevos registros: ${payload[0].value}`}</p>
       </div>
     );
   }
@@ -72,7 +73,7 @@ export default class Example extends PureComponent {
     return (
       <>
       <Typography component="h1" variant="h4" align="center" color="textPrimary" gutterBottom>
-          Logueos diarios del ultimo mes
+          Logueos y registros diarios del ultimo mes
       </Typography>
       <BarChart
         width={900}
@@ -87,6 +88,7 @@ export default class Example extends PureComponent {
         <YAxis />
         <Tooltip content={<CustomTooltip />} />
         <Legend />
+        <Bar dataKey="Registros" fill="#82ca9d" />
         <Bar dataKey="Logueos" barSize={50} fill="#8884d8" />
       </BarChart>
       </>
