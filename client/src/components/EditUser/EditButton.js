@@ -64,37 +64,44 @@ export default function EditButton() {
 
   const handleSave = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:3001/users/editUser/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(data),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
+    Swal.fire({
+      title: '¿Queres guardar los cambios?',
+      showCancelButton: true,
+      confirmButtonText: `Guardar`,
+      cancelButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3001/users/editUser/${id}`, {
+          method: 'PUT',
+          body: JSON.stringify(data),
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        })
+          .then(data => data.json())
+          .then(res => {
+            if (res.status === 200) {
+              Swal.fire('Guardado!', '', 'success')
+              setTimeout(function () { window.open('/users', '_self') }, 1500);
+            } else {
+              Swal.fire('Error', 'Los cambios no fueron guardado', 'info')
+            }
+          })
+      }
     })
-      .then(data => data.json())
-      .then(res => {
-        if (res.status === 200) {
-          alert('Usuario editado con exito')
-          window.open('/users', '_self')
-        }
-        else {
-          alert('Ocurrio un error')
-        }
-      })
   };
 
   const handleDelete = (e) => {
     e.preventDefault()
-
     Swal.fire({
       title: 'Estas seguro?',
       text: "Borrarás el usuario para siempre",
       icon: 'warning',
       showCancelButton: true,
       cancelButtonText: 'Cancelar',
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
       confirmButtonText: 'Eliminar'
     }).then((result) => {
       if (result.isConfirmed) {
@@ -108,19 +115,21 @@ export default function EditButton() {
           .then(data => data.json())
           .then(res => {
             if (res.status === 200) {
-              window.open('/users', '_self')
+              Swal.fire(
+                'El usuario ha sido eliminado',
+                '',
+                'success'
+              )
+              setTimeout(function () { window.open('/users', '_self') }, 1500);
             }
             else {
-              alert('Ocurrio un error')
+              Swal.fire(
+                'Ocurrio un error',
+                'Vuelve a intentarlo',
+                'error'
+              )
             }
           })
-        Swal.fire(
-          'El usuario ha sido eliminado',
-          '',
-          'success'
-        )
-      } else {
-
       }
     })
   }
