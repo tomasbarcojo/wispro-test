@@ -10,8 +10,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { useState, useEffect } from 'react'
-import EditIcon from '../EditUser/EditUser'
-import DeleteIcon from './DeleteButton'
+import EditIcon from '@material-ui/icons/Edit';
+import { Tooltip } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
 // import EditIcon from '@material-ui/icons/Edit';
 // import DeleteIcon from '@material-ui/icons/Delete';
 
@@ -32,11 +33,11 @@ export default function TableUsers() {
 
   useEffect(() => {
     fetch(`http://localhost:3001/users/`)
-    .then(res => res.json())
-    .then(data => {
-      setUsers(data)
-    })
-}, [])
+      .then(res => res.json())
+      .then(data => {
+        setUsers(data)
+      })
+  }, [])
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -53,9 +54,9 @@ export default function TableUsers() {
         <Table size="small" stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-                <TableCell>Nombre</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Opciones</TableCell>
+              <TableCell>Nombre</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Opciones</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -66,14 +67,12 @@ export default function TableUsers() {
                   <TableCell>{row.email}</TableCell>
                   <TableCell padding='none'>
                     <Link to={`/edituser/${row.id}`}>
-                      <EditIcon
-                      id={row.id}
-                      firstName={row.firstName}
-                      lastName={row.lastName}
-                      email={row.email}
-                      />
+                      <IconButton>
+                        <Tooltip title='Editar producto'>
+                          <EditIcon fontSize='small' />
+                        </Tooltip>
+                      </IconButton>
                     </Link>
-                  
                   </TableCell>
                 </TableRow>
               </>
@@ -92,7 +91,7 @@ export default function TableUsers() {
         labelRowsPerPage='Filas por pagina:'
         nextIconButtonText='Pagina siguiente'
         backIconButtonText='Pagina previa'
-        labelDisplayedRows={ (from=page) => (`${from.from}-${from.to === -1 ? from.count : from.to} de ${from.count}`)}
+        labelDisplayedRows={(from = page) => (`${from.from}-${from.to === -1 ? from.count : from.to} de ${from.count}`)}
       />
     </Paper>
   );
