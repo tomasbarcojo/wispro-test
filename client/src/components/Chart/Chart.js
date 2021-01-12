@@ -5,42 +5,44 @@ import {
 
 const data = [
   {
-    name: 'Page A', uv: 4000, pv: 2400, amt: 2400,
+    name: '01/01',  log: 4000, pv: 2400, amt: 2400,
   },
   {
-    name: 'Page B', uv: 3000, pv: 1398, amt: 2210,
+    name: '02/01', log: 3000, pv: 1398, amt: 2210,
   },
   {
-    name: 'Page C', uv: 2000, pv: 9800, amt: 2290,
+    name: '03/01', log: 2000, pv: 9800, amt: 2290,
   },
   {
-    name: 'Page D', uv: 2780, pv: 3908, amt: 2000,
+    name: '04/01', log: 2780, pv: 3908, amt: 2000,
   },
   {
-    name: 'Page E', uv: 1890, pv: 4800, amt: 2181,
+    name: '05/01', log: 1890, pv: 4800, amt: 2181,
   },
   {
-    name: 'Page F', uv: 2390, pv: 3800, amt: 2500,
+    name: '06/01', log: 2390, pv: 3800, amt: 2500,
   },
   {
-    name: 'Page G', uv: 3490, pv: 4300, amt: 2100,
+    name: '07/01', log: 3490, pv: 4300, amt: 2100,
   },
 ];
 
 
 const getIntroOfPage = (label) => {
-  if (label === 'Page A') {
-    return "Page A is about men's clothing";
-  } if (label === 'Page B') {
-    return "Page B is about women's dress";
-  } if (label === 'Page C') {
-    return "Page C is about women's bag";
-  } if (label === 'Page D') {
-    return 'Page D is about household goods';
-  } if (label === 'Page E') {
-    return 'Page E is about food';
-  } if (label === 'Page F') {
-    return 'Page F is about baby food';
+  if (label === '01/01') {
+    return "Dia 01/01";
+  } if (label === '02/01') {
+    return "Dia 02/01";
+  } if (label === '03/01') {
+    return "Dia 03/01";
+  } if (label === '04/01') {
+    return 'Dia 04/01';
+  } if (label === '05/01') {
+    return 'Dia 05/01';
+  } if (label === '06/01') {
+    return 'Dia 06/01';
+  } if (label === '07/01') {
+    return 'Dia 07/01';
   }
 };
 
@@ -48,9 +50,9 @@ const CustomTooltip = ({ active, payload, label }) => {
   if (active) {
     return (
       <div className="custom-tooltip">
-        <p className="label">{`${label} : ${payload[0].value}`}</p>
         <p className="intro">{getIntroOfPage(label)}</p>
-        <p className="desc">Anything you want can be displayed here.</p>
+        <p className="label">{`Logueos registrados: ${payload[0].value}`}</p>
+        {/* <p className="desc">Anything you want can be displayed here.</p> */}
       </div>
     );
   }
@@ -59,12 +61,11 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 export default class Example extends PureComponent {
-  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/vxq4ep63/';
 
   render() {
     return (
       <BarChart
-        width={500}
+        width={800}
         height={300}
         data={data}
         margin={{
@@ -76,7 +77,7 @@ export default class Example extends PureComponent {
         <YAxis />
         <Tooltip content={<CustomTooltip />} />
         <Legend />
-        <Bar dataKey="pv" barSize={20} fill="#8884d8" />
+        <Bar dataKey="pv" barSize={50} fill="#8884d8" />
       </BarChart>
     );
   }
