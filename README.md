@@ -23,14 +23,11 @@ Una vez entregado se pactará una reunión para defender el desarrollo realizado
 
 # Instrucciones para levantar el proyecto
 
-# How to start the project:
-
 Para levantar el proyecto es necesario seguir los siguientes pasos:
 
 - Clonar el repositorio
 
 - Instalar [PostgreSQL](https://www.postgresql.org/) en tu PC y crear una base de datos llamada `development`.
-
 
 - Crear un archivo `.env` en la carpeta `api` con el siguiente contenido:
 
