@@ -49,50 +49,56 @@ export default function TableUsers() {
   };
 
   return (
-    <Paper className={classes.root}>
-      <TableContainer className={classes.container}>
-        <Table size="small" stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Nombre</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Opciones</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {users.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) =>
-              <>
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                  <TableCell>{row.firstName} {row.lastName}</TableCell>
-                  <TableCell>{row.email}</TableCell>
-                  <TableCell padding='none'>
-                    <Link to={`/edituser/${row.id}`}>
-                      <IconButton>
-                        <Tooltip title='Editar producto'>
-                          <EditIcon fontSize='small' />
-                        </Tooltip>
-                      </IconButton>
-                    </Link>
-                  </TableCell>
-                </TableRow>
-              </>
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 50, 100]}
-        component="div"
-        count={users.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
-        labelRowsPerPage='Filas por pagina:'
-        nextIconButtonText='Pagina siguiente'
-        backIconButtonText='Pagina previa'
-        labelDisplayedRows={(from = page) => (`${from.from}-${from.to === -1 ? from.count : from.to} de ${from.count}`)}
-      />
-    </Paper>
+    <div>
+      { users && users.length > 0 ?
+        <>
+          <Paper className={classes.root}>
+            <TableContainer className={classes.container}>
+              <Table size="small" stickyHeader aria-label="sticky table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Nombre</TableCell>
+                    <TableCell>Email</TableCell>
+                    <TableCell>Opciones</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {users.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) =>
+                    <>
+                      <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                        <TableCell>{row.firstName} {row.lastName}</TableCell>
+                        <TableCell>{row.email}</TableCell>
+                        <TableCell padding='none'>
+                          <Link to={`/edituser/${row.id}`}>
+                            <IconButton>
+                              <Tooltip title='Editar producto'>
+                                <EditIcon fontSize='small' />
+                              </Tooltip>
+                            </IconButton>
+                          </Link>
+                        </TableCell>
+                      </TableRow>
+                    </>
+                  )}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <TablePagination
+              rowsPerPageOptions={[10, 25, 50, 100]}
+              component="div"
+              count={users.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onChangePage={handleChangePage}
+              onChangeRowsPerPage={handleChangeRowsPerPage}
+              labelRowsPerPage='Filas por pagina:'
+              nextIconButtonText='Pagina siguiente'
+              backIconButtonText='Pagina previa'
+              labelDisplayedRows={(from = page) => (`${from.from}-${from.to === -1 ? from.count : from.to} de ${from.count}`)}
+            />
+          </Paper>
+        </>
+        : <h1 className='NoUsersDashboard'>No existen usuarios!</h1>}
+    </div>
   );
 }

@@ -92,8 +92,13 @@ a {
 
 /* DASHBOARD */
 
+.NoUsersDashboard {
+    display: flex;
+    justify-content: center;
+}
+
 .WisproLogoDashboard {
-    width: 9%;
+    width: 60%;
     cursor: pointer;
 }
 
@@ -108,4 +113,9 @@ a {
 .Divider {
     margin-top: 50px;
     /* margin-bottom: 20px; */
+}
+
+.EditUserButtons {
+    display: flex;
+    justify-content: space-around;
 }

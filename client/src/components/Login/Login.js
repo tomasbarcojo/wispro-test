@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom'
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Copyright from '../../utils/Copyrigth'
+import Copyright from '../../utils/Copyright'
 import WisproLogo from '../../images/wisprologohoriz.png'
 import { useHistory } from "react-router-dom";
 import { useState } from 'react'
 import '../../App.css'
+import Swal from 'sweetalert2'
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -56,7 +57,11 @@ export default function SignIn() {
           history.push('/users')
         }
         else {
-          alert('Datos invalidos')
+          Swal.fire(
+            'Datos invalidos o inexistentes',
+            '',
+            'error'
+          )
         }
       })
     }

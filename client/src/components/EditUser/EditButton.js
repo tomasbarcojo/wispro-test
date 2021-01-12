@@ -10,8 +10,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Copyright from '../../utils/Copyrigth'
-import { useParams } from 'react-router-dom';
+import Copyright from '../../utils/Copyright'
+import { useParams, Link } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -35,13 +36,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function EditButton() {
   const classes = useStyles();
+  const { id } = useParams()
   const [data, setData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     password: '',
   })
-  const { id } = useParams()
 
   useEffect(() => {
     fetch(`http://localhost:3001/users/${id}`)
@@ -55,55 +56,73 @@ export default function EditButton() {
           password: user.password,
         })
       })
-  }, [])
+  }, [id])
 
   const handleChange = (event) => {
-    setData({...data, [event.target.name]: event.target.value})
+    setData({ ...data, [event.target.name]: event.target.value })
   }
 
   const handleSave = (e) => {
     e.preventDefault()
     fetch(`http://localhost:3001/users/editUser/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify(data),
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
+      method: 'PUT',
+      body: JSON.stringify(data),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
     })
-    .then(data => data.json())
-    .then(res => {
+      .then(data => data.json())
+      .then(res => {
         if (res.status === 200) {
-            alert('Usuario editado con exito')
-            window.open('/users', '_self')
-        }
-        else {
-            alert('Ocurrio un error')
-        }
-    })
-  };
-
-  const handleDelete = (e) => {
-    e.preventDefault()
-    if (window.confirm('Estas seguro que deseas eliminar este usuario?')) {
-      fetch(`http://localhost:3001/users/deleteUser/${id}`, {
-        method: 'DELETE',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-    })
-    .then(data => data.json())
-    .then(res => {
-        if (res.status === 200) {
-            alert('Usuario eliminado')
-            window.open('/users', '_self')
+          alert('Usuario editado con exito')
+          window.open('/users', '_self')
         }
         else {
           alert('Ocurrio un error')
         }
+      })
+  };
+
+  const handleDelete = (e) => {
+    e.preventDefault()
+
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Borrarás el usuario para siempre",
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3001/users/deleteUser/${id}`, {
+          method: 'DELETE',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        })
+          .then(data => data.json())
+          .then(res => {
+            if (res.status === 200) {
+              window.open('/users', '_self')
+            }
+            else {
+              alert('Ocurrio un error')
+            }
+          })
+        Swal.fire(
+          'El usuario ha sido eliminado',
+          '',
+          'success'
+        )
+      } else {
+
+      }
     })
-    }
   }
 
   return (
@@ -111,97 +130,109 @@ export default function EditButton() {
       <NavBar />
 
       <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Editar usuario
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Editar usuario
         </Typography>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="firstName"
-                variant="outlined"
-                // required
-                fullWidth
-                id="firstName"
-                label="Nombre"
-                autoFocus
-                value={data.firstName}
-                onChange={handleChange}
+          <form className={classes.form} noValidate>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  name="firstName"
+                  variant="outlined"
+                  // required
+                  fullWidth
+                  id="firstName"
+                  label="Nombre"
+                  autoFocus
+                  value={data.firstName}
+                  onChange={handleChange}
                 // value={data.firstName}
-              />
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  variant="outlined"
+                  // required
+                  fullWidth
+                  id="lastName"
+                  label="Apellido"
+                  name="lastName"
+                  autoComplete="lname"
+                  value={data.lastName}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email"
+                  name="email"
+                  autoComplete="email"
+                  disabled
+                  value={data.email}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  disabled
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  value='●●●●●●●●●●●●●'
+                  onChange={handleChange}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                // required
-                fullWidth
-                id="lastName"
-                label="Apellido"
-                name="lastName"
-                autoComplete="lname"
-                value={data.lastName}
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                autoComplete="email"
-                disabled
-                value={data.email}
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                disabled
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value='●●●●●●●●●●●●●'
-                onChange={handleChange}
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="secondary"
-            className={classes.submit}
-            onClick={handleDelete}
-          >
-            ELIMINAR USUARIO
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="secondary"
+              className={classes.submit}
+              onClick={handleDelete}
+            >
+              ELIMINAR USUARIO
           </Button>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            onClick={handleSave}
-          >
-            GUARDAR
+            <div className='EditUserButtons'>
+              <Link to='/users'>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                >
+                  CANCELAR
           </Button>
-        </form>
-      </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
-    </Container>
+              </Link>
+
+              <Button
+                type="submit"
+
+                variant="contained"
+                color="primary"
+                onClick={handleSave}
+              >
+                GUARDAR
+          </Button>
+            </div>
+          </form>
+        </div>
+        <Box mt={5}>
+          <Copyright />
+        </Box>
+      </Container>
     </div>
   )
 }

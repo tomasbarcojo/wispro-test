@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Copyright from '../../utils/Copyrigth'
+import Copyright from '../../utils/Copyright'
 import WisproLogo from '../../images/wisprologohoriz.png'
 import { useState } from 'react'
 import { useHistory } from "react-router-dom";

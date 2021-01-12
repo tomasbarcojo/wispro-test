@@ -4,39 +4,43 @@ import {
 } from 'recharts';
 import Typography from '@material-ui/core/Typography';
 
+const randomValues = () => {
+  return Math.floor(Math.random() * (10000 - 0)) + 0
+}
+
 const data = [
   {
-    day: '01/01', Logueos: 2400, Registros: 2400,
+    day: '01/01', Logueos: randomValues(), Registros: randomValues(),
   },
   {
-    day: '02/01', Logueos: 1398, Registros: 2210,
+    day: '02/01', Logueos: randomValues(), Registros: randomValues(),
   },
   {
-    day: '03/01', Logueos: 9800, Registros: 2290,
+    day: '03/01', Logueos: randomValues(), Registros: randomValues(),
   },
   {
-    day: '04/01', Logueos: 3908, Registros: 2000,
+    day: '04/01', Logueos: randomValues(), Registros: randomValues(),
   },
   {
-    day: '05/01', Logueos: 4800, Registros: 2181,
+    day: '05/01', Logueos: randomValues(), Registros: randomValues(),
   },
   {
-    day: '06/01', Logueos: 3800, Registros: 2500,
+    day: '06/01', Logueos: randomValues(), Registros: randomValues(),
   },
   {
-    day: '07/01', Logueos: 4300, Registros: 2100,
+    day: '07/01', Logueos: randomValues(), Registros: randomValues(),
   },
   {
-    day: '08/01', Logueos: 4300, Registros: 2100,
+    day: '08/01', Logueos: randomValues(), Registros: randomValues(),
   },
   {
-    day: '09/01', Logueos: 4300, Registros: 2100,
+    day: '09/01', Logueos: randomValues(), Registros: randomValues(),
   },
   {
-    day: '10/01', Logueos: 4300, Registros: 2100,
+    day: '10/01', Logueos: randomValues(), Registros: randomValues(),
   },
   {
-    day: '11/01', Logueos: 4300, Registros: 2100,
+    day: '11/01', Logueos: randomValues(), Registros: randomValues(),
   },
 ];
 
